@@ -36,9 +36,9 @@ function handleButtonStateChanged (event) {
     let sync = false;
     let msg = "";
 
-    if (evData === "pressed") {
+    if (evData === "connected") {
         buttonPressCounter++; // increase the buttonPressCounter by 1
-        msg = "pressed";
+        msg = "connected";
 
         // check if the last two button press events were whithin 1 second
         if (evTimestamp - lastButtonPressEvent.timestamp < 1000) {
@@ -50,8 +50,8 @@ function handleButtonStateChanged (event) {
         lastButtonPressEvent.timestamp = evTimestamp;
         lastButtonPressEvent.deviceId = evDeviceId;
     } 
-    else if (evData === "released") {
-        msg = "released";
+    else if (evData === "disconnected") {
+        msg = "disconnected";
     }
     else {
         msg = "unknown state";
@@ -65,7 +65,7 @@ function handleButtonStateChanged (event) {
     }
 
     // send data to all connected clients
-    sendData("buttonStateChanged", data, evDeviceId, evTimestamp );
+    sendData("connectionStateBump", data, evDeviceId, evTimestamp );
 }
 
 // send data to the clients.
