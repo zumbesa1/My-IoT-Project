@@ -3,8 +3,8 @@ var rootUrl = window.location.origin; // get the root URL, e.g. https://example.
 var app = new Vue({
     el: "#app",
     data: {
-        buttonState_0: "unknown", // the state of the button on device 0
-        buttonState_1: "unknown", // the state of the button on device 1
+        connectionState_0: "unknown", // the state of the button on device 0
+        connectionState_1: "unknown", // the state of the button on device 1
         buttonPressCounter: 0,    // how many times the buttons were pressed
         buttonsSync: false,       // true if the buttons were pressed within 1 second
         blinking_0: false,        // true if device 0 is blinking.
@@ -32,9 +32,9 @@ var app = new Vue({
         // react on events: update the variables to be displayed
         updateVariables(ev) {
             // Event "buttonStateChanged"
-            if (ev.eventName === "buttonStateChanged") {
+            if (ev.eventName === "connectionStateBump") {
                 this.buttonPressCounter = ev.eventData.counter;
-                if (ev.eventData.message === "pressed") {
+                if (ev.eventData.message === "connected") {
                     this.buttonsSync = ev.eventData.pressedSync;
                 }
             }
