@@ -5,7 +5,7 @@ var lastButtonPressEvent = {
 }
 
 // remember how many times the buttons were pressed
-var buttonPressCounter = 0;
+var connectionCounter = 0;
 
 // react on the "blinkingStateChanged" Event
 function handleBlinkingStateChanged (event) {
@@ -37,7 +37,7 @@ function handleButtonStateChanged (event) {
     let msg = "";
 
     if (evData === "connected") {
-        buttonPressCounter++; // increase the buttonPressCounter by 1
+        connectionCounter++; // increase the connectionCounter by 1
         msg = "connected";
 
         // check if the last two button press events were whithin 1 second
@@ -60,7 +60,7 @@ function handleButtonStateChanged (event) {
     // the data we want to send to the clients
     let data = {
         message: msg,
-        counter: buttonPressCounter,
+        counter: connectionCounter,
         pressedSync: sync
     }
 

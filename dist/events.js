@@ -16,6 +16,9 @@ var app = new Vue({
                 source.onmessage = (event) => { 
                     this.messages.push(event.data);
                     this.lastMessage = event.data;
+                    console.log("event is: " + event);
+                    console.log("event Data is: " + event.data);
+                    console.log("the message is: " + this.message);
                 };
             } else {
                 this.message = "Your browser does not support server-sent events.";
