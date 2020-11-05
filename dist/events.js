@@ -3,8 +3,7 @@ var app = new Vue({
     el: "#app",
     data: {
         messages: [],
-        lastMessage: "",
-        lengthOfMessages: messages.length
+        lastMessage: ""
     },
     mounted: function () {
         this.initSse();
