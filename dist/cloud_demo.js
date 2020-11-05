@@ -59,9 +59,9 @@ var app = new Vue({
             }
         },
         // call the function "blinkRed" in your backend
-        blinkRed: function (nr) {
+        blinkRed: function (nr, state ) {
             var duration = 2000; // blinking duration in milliseconds
-            axios.post(rootUrl + "/api/device/" + nr + "/function/blinkRed", { arg: duration })
+            axios.post(rootUrl + "/api/device/" + nr + "/function/blinkRed("+ state +")", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
                     console.log(response.data); // we could to something meaningful with the return value here ... 
