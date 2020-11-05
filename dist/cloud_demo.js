@@ -5,7 +5,7 @@ var app = new Vue({
     data: {
         connectionState_0: "unknown", // the state of the button on device 0
         connectionState_1: "unknown", // the state of the button on device 1
-        buttonPressCounter: 0,    // how many times the buttons were pressed
+        connectionCounter: 0,    // how many times the buttons were pressed
         buttonsSync: false,       // true if the buttons were pressed within 1 second
         blinking_0: false,        // true if device 0 is blinking.
         blinking_1: false,        // true if device 0 is blinking.
@@ -33,7 +33,7 @@ var app = new Vue({
         updateVariables(ev) {
             // Event "buttonStateChanged"
             if (ev.eventName === "connectionStateBump") {
-                this.buttonPressCounter = ev.eventData.counter;
+                this.connectionCounter = ev.eventData.counter;
                 if (ev.eventData.message === "connected") {
                     this.buttonsSync = ev.eventData.pressedSync;
                 }
@@ -71,18 +71,21 @@ var app = new Vue({
                 })
         },
         // call the function "connectDevicesByButton" in your backend
-        connectDevicesByButton: function () {
-            var duration = 2000; // blinking duration in milliseconds
-            axios.post(rootUrl + "/api/device/0/function/connectDevicesByButton", { arg: duration })
-                .then(response => {
-                    // Handle the response from the server
-                    console.log(response.data); // we could to something meaningful with the return value here ... 
-                })
-                .catch(error => {
-                    alert("Could not call the function 'connectDevicesByButton' of device number 0" + ".\n\n" + error)
-                })
-            var duration = 2000; // blinking duration in milliseconds
-            axios.post(rootUrl + "/api/device/1/function/connectDevicesByButton", { arg: duration })
+        connectDevicesByButton: function (nr) {
+            if(nr==0){
+                var duration = 2000; // blinking duration in milliseconds
+                axios.post(rootUrl + "/api/device/"+nr+"/function/connectDevicesByButton", { arg: duration })
+                    .then(response => {
+                        // Handle the response from the server
+                        console.log(response.data); // we could to something meaningful with the return value here ... 
+                    })
+                    .catch(error => {
+                        alert("Could not call the function 'connectDevicesByButton' of device number 0" + ".\n\n" + error)
+                    })
+            }
+            else{
+                var duration = 2000; // blinking duration in milliseconds
+                axios.post(rootUrl + "/api/device/"+nr+"/function/connectDevicesByButton", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
                     console.log(response.data); // we could to something meaningful with the return value here ... 
@@ -90,11 +93,14 @@ var app = new Vue({
                 .catch(error => {
                     alert("Could not call the function 'connectDevicesByButton' of device number 1 " + ".\n\n" + error)
                 })
+            }
+            
         },
         // call the function "disconnectDevicesByButton" in your backend
-        disconnectDevicesByButton: function () {
+        disconnectDevicesByButton: function (nr) {
             var duration = 2000; // blinking duration in milliseconds
-            axios.post(rootUrl + "/api/device/0/function/disconnectDevicesByButton", { arg: duration })
+            if(nr == 0){
+                axios.post(rootUrl + "/api/device/"+nr+"/function/disconnectDevicesByButton", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
                     console.log(response.data); // we could to something meaningful with the return value here ... 
@@ -102,15 +108,20 @@ var app = new Vue({
                 .catch(error => {
                     alert("Could not call the function 'disconnectDevicesByButton' of device number 0" + ".\n\n" + error)
                 })
-            var duration = 2000; // blinking duration in milliseconds
-            axios.post(rootUrl + "/api/device/1/function/disconnectDevicesByButton", { arg: duration })
-                .then(response => {
-                    // Handle the response from the server
-                    console.log(response.data); // we could to something meaningful with the return value here ... 
-                })
-                .catch(error => {
-                    alert("Could not call the function 'disconnectDevicesByButton' of device number 1 " + ".\n\n" + error)
-                })
+                //-------------------------
+            }
+            else{
+                var duration = 2000; // blinking duration in milliseconds
+                axios.post(rootUrl + "/api/device/"+nr+"/function/disconnectDevicesByButton", { arg: duration })
+                    .then(response => {
+                        // Handle the response from the server
+                        console.log(response.data); // we could to something meaningful with the return value here ... 
+                    })
+                    .catch(error => {
+                        alert("Could not call the function 'disconnectDevicesByButton' of device number 1 " + ".\n\n" + error)
+                    }) 
+            }
+
         },
         // get the value of the variable "buttonState" on the device with number "nr" from your backend
         getButtonState: function (nr) {
