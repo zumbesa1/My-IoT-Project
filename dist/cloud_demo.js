@@ -59,9 +59,51 @@ var app = new Vue({
             }
         },
         // call the function "blinkRed" in your backend
-        blinkRed: function (nr, state ) {
+        blinkRed: function (nr) {
             var duration = 2000; // blinking duration in milliseconds
-            axios.post(rootUrl + "/api/device/" + nr + "/function/blinkRed("+ state +")", { arg: duration })
+            axios.post(rootUrl + "/api/device/" + nr + "/function/blinkRed", { arg: duration })
+                .then(response => {
+                    // Handle the response from the server
+                    console.log(response.data); // we could to something meaningful with the return value here ... 
+                })
+                .catch(error => {
+                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                })
+        },
+        // call the function "connectDevicesByButton" in your backend
+        connectDevicesByButton: function () {
+            var duration = 2000; // blinking duration in milliseconds
+            axios.post(rootUrl + "/api/device/0/function/connectDevicesByButton", { arg: duration })
+                .then(response => {
+                    // Handle the response from the server
+                    console.log(response.data); // we could to something meaningful with the return value here ... 
+                })
+                .catch(error => {
+                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                })
+            var duration = 2000; // blinking duration in milliseconds
+            axios.post(rootUrl + "/api/device/1/function/connectDevicesByButton", { arg: duration })
+                .then(response => {
+                    // Handle the response from the server
+                    console.log(response.data); // we could to something meaningful with the return value here ... 
+                })
+                .catch(error => {
+                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                })
+        },
+        // call the function "disconnectDevicesByButton" in your backend
+        disconnectDevicesByButton: function () {
+            var duration = 2000; // blinking duration in milliseconds
+            axios.post(rootUrl + "/api/device/0/function/disconnectDevicesByButton", { arg: duration })
+                .then(response => {
+                    // Handle the response from the server
+                    console.log(response.data); // we could to something meaningful with the return value here ... 
+                })
+                .catch(error => {
+                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                })
+            var duration = 2000; // blinking duration in milliseconds
+            axios.post(rootUrl + "/api/device/1/function/disconnectDevicesByButton", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
                     console.log(response.data); // we could to something meaningful with the return value here ... 
@@ -77,10 +119,10 @@ var app = new Vue({
                     // Handle the response from the server
                     var buttonState = response.data.result;
                     if (nr === 0) {
-                        this.buttonState_0 = buttonState;
+                        this.connectionState_0 = buttonState;
                     }
                     else if (nr === 1) {
-                        this.buttonState_1 = buttonState;
+                        this.connectionState_1 = buttonState;
                     }
                     else {
                         console.log("unknown device number: " + nr);

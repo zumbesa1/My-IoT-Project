@@ -42,8 +42,8 @@
         <h4>Functions</h4>
         <!-- Call functions example  -->
         <p>Blink red</p>
-        <button v-on:click="blinkRed('connect')">Blink Red (Device 0)</button>
-        <button v-on:click="blinkRed('disconnect')">Blink Red (Device 1)</button>
+        <button v-on:click="connectDevicesByButton()">CONNECT DEVICES</button>
+        <button v-on:click="disconnectDevicesByButton()">DISCONNECT DEVICES</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
