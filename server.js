@@ -59,7 +59,7 @@ for (let device of devices) {
     // Add your event listeners here.
     // You don't have to change anything else in this file.
     /////////////////////////////////////////////////////////
-    source.addEventListener('connectionStateBump', eventListeners.handleButtonStateChanged)
+    source.addEventListener('connectionStateBump', eventListeners.handleconnectionStateBumpChanged)
     source.addEventListener('blinkingStateChanged', eventListeners.handleBlinkingStateChanged)
 
     /////////////////////////////////////////////////////////

@@ -16,8 +16,9 @@ var app = new Vue({
                 source.onmessage = (event) => { 
                     this.messages.push(event.data);
                     this.lastMessage = event.data;
+                    console.log(messages.length);
                     console.log("event is: " + event);
-                    console.log("event Data is: " + event.data);
+                    console.log("event Data is: " + event.data.eventName);
                     console.log("the message is: " + this.message);
                 };
             } else {

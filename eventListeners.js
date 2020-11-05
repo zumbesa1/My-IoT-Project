@@ -1,3 +1,4 @@
+
 // remember the last event so that we can check if two buttons were pressed within 1 second
 var lastButtonPressEvent = {
     deviceId: "",
@@ -25,7 +26,7 @@ function handleBlinkingStateChanged (event) {
 }
 
 // react on the "buttonStateChanged" Event
-function handleButtonStateChanged (event) {
+function handleconnectionStateBumpChanged(event) {
     // read variables from the event
     let ev = JSON.parse(event.data);
     let evData = ev.data; // the data from the argon event: "pressed" or "released"
@@ -92,4 +93,4 @@ exports.sse = null;
 
 // export your own functions here as well
 exports.handleBlinkingStateChanged = handleBlinkingStateChanged;
-exports.handleButtonStateChanged = handleButtonStateChanged;
+exports.handleButtonStateChanged = handleconnectionStateBumpChanged;
