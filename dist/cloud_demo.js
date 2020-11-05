@@ -133,15 +133,15 @@ var app = new Vue({
         },
         // get the value of the variable "buttonState" on the device with number "nr" from your backend
         getButtonState: function (nr) {
-            axios.get(rootUrl + "/api/device/" + nr + "/variable/conectionState")
+            axios.get(rootUrl + "/api/device/" + nr + "/variable/connectionState")
                 .then(response => {
                     // Handle the response from the server
-                    var conectionState = response.data.result;
+                    var connectionState = response.data.result;
                     if (nr === 0) {
-                        this.connectionState_0 = conectionState;
+                        this.connectionState_0 = connectionState;
                     }
                     else if (nr === 1) {
-                        this.connectionState_1 = conectionState;
+                        this.connectionState_1 = connectionState;
                     }
                     else {
                         console.log("unknown device number: " + nr);
