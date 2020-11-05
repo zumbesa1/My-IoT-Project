@@ -77,10 +77,12 @@ var app = new Vue({
                 axios.post(rootUrl + "/api/device/"+nr+"/function/connectDevicesByButton", { arg: duration })
                     .then(response => {
                         // Handle the response from the server
+                        console.log("SUCCESS");
                         console.log(response.data); // we could to something meaningful with the return value here ... 
                     })
                     .catch(error => {
-                        alert("Could not call the function 'connectDevicesByButton' of device number 0" + ".\n\n" + error)
+                        console.log("FAIL");
+                        alert("Could not call the function 'connectDevicesByButton' of device number " + nr + ".\n\n" + error)
                     })
             }
             else{
@@ -88,10 +90,12 @@ var app = new Vue({
                 axios.post(rootUrl + "/api/device/"+nr+"/function/connectDevicesByButton", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
+                        console.log("SUCCESS");
                     console.log(response.data); // we could to something meaningful with the return value here ... 
                 })
                 .catch(error => {
-                    alert("Could not call the function 'connectDevicesByButton' of device number 1 " + ".\n\n" + error)
+                    console.log("FAIL");
+                    alert("Could not call the function 'connectDevicesByButton' of device number " + nr + ".\n\n" + error)
                 })
             }
             
@@ -103,10 +107,12 @@ var app = new Vue({
                 axios.post(rootUrl + "/api/device/"+nr+"/function/disconnectDevicesByButton", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
+                        console.log("SUCCESS");
                     console.log(response.data); // we could to something meaningful with the return value here ... 
                 })
                 .catch(error => {
-                    alert("Could not call the function 'disconnectDevicesByButton' of device number 0" + ".\n\n" + error)
+                    console.log("FAIL");
+                    alert("Could not call the function 'disconnectDevicesByButton' of device number " + nr + ".\n\n" + error)
                 })
                 //-------------------------
             }
@@ -115,10 +121,12 @@ var app = new Vue({
                 axios.post(rootUrl + "/api/device/"+nr+"/function/disconnectDevicesByButton", { arg: duration })
                     .then(response => {
                         // Handle the response from the server
+                        console.log("SUCCESS");
                         console.log(response.data); // we could to something meaningful with the return value here ... 
                     })
                     .catch(error => {
-                        alert("Could not call the function 'disconnectDevicesByButton' of device number 1 " + ".\n\n" + error)
+                        console.log("FAIL");
+                        alert("Could not call the function 'disconnectDevicesByButton' of device number" + nr + ".\n\n" + error)
                     }) 
             }
 

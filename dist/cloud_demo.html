@@ -23,19 +23,19 @@
         <p>Buttons pressed within 1 second: {{ buttonsSync }}</p>
 
         <!-- Counter example (received as event) -->
-        <p>Button press counter: {{ buttonPressCounter }}</p>
+        <p>Button press counter: {{ connectionCounter }}</p>
 
         <!-- Blinking example (received as event) -->
-        <p>Device 0 is blinking: {{ blinking_0 }}</p>
-        <p>Device 1 is blinking: {{ blinking_1 }}</p>
+        <p>Device 0 is blinking: {{ connectionState_0 }}</p>
+        <p>Device 1 is blinking: {{ connectionState_1 }}</p>
         
         <hr>
-        <h4>Variables</h4>
+        <h4>Devices</h4> <!-- VARIABLES  -->
         <!-- Read variables example -->
-        <p>Button state (0): {{ buttonState_0 }} </p>
+        <p>Connection State of Device  (0): {{ connectionState_0 }} </p>
         <button v-on:click="getButtonState(0)">Get button state (Device 0)</button>
         <br>
-        <p>Button state (1): {{ buttonState_1 }} </p>
+        <p>Connection State of Device (1): {{ connectionState_1 }} </p>
         <button v-on:click="getButtonState(1)">Get button state (Device 1)</button>
         
         <hr>
