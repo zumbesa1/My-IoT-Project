@@ -61,6 +61,8 @@ for (let device of devices) {
     /////////////////////////////////////////////////////////
     source.addEventListener('connectionStateBump', eventListeners.handleconnectionStateBumpChanged)
     source.addEventListener('blinkingStateChanged', eventListeners.handleBlinkingStateChanged)
+    source.addEventListener('alreadyConnectetMessage', eventListeners.handleAlreadyConnected)
+    source.addEventListener('alreadyDisconnectedMessage', eventListeners.handleAlreadyDisconnected)
 
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////

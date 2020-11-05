@@ -3,7 +3,7 @@ var app = new Vue({
     el: "#app",
     data: {
         messages: [],
-        lastMessage: ""
+        lastMessage: ""        
     },
     mounted: function () {
         this.initSse();
@@ -16,6 +16,7 @@ var app = new Vue({
                 source.onmessage = (event) => { 
                     this.messages.push(event.data);
                     this.lastMessage = event.data;
+
                 };
             } else {
                 this.message = "Your browser does not support server-sent events.";
