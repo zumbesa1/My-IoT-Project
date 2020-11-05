@@ -26,7 +26,7 @@ function handleBlinkingStateChanged (event) {
 }
 
 // react on the "buttonStateChanged" Event
-function handleconnectionStateBumpChanged(event) {
+function handleConnectionStateBumpChanged(event) {
     // read variables from the event
     let ev = JSON.parse(event.data);
     let evData = ev.data; // the data from the argon event: "pressed" or "released"
@@ -93,4 +93,4 @@ exports.sse = null;
 
 // export your own functions here as well
 exports.handleBlinkingStateChanged = handleBlinkingStateChanged;
-exports.handleButtonStateChanged = handleconnectionStateBumpChanged;
+exports.handleConnectionStateBumpChanged = handleConnectionStateBumpChanged;
