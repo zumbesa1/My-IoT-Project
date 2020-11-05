@@ -6,9 +6,10 @@ var app = new Vue({
         connectionState_0: "unknown", // the state of the button on device 0
         connectionState_1: "unknown", // the state of the button on device 1
         connectionCounter: 0,    // how many times the buttons were pressed
-        buttonsSync: false,       // true if the buttons were pressed within 1 second
+        connnectionSync: false,       // true if the buttons were pressed within 1 second
         blinking_0: false,        // true if device 0 is blinking.
         blinking_1: false,        // true if device 0 is blinking.
+        
         // add your own variables here ...
     },
     // This function is executed once when the page is loaded.
@@ -35,7 +36,7 @@ var app = new Vue({
             if (ev.eventName === "connectionStateBump") {
                 this.connectionCounter = ev.eventData.counter;
                 if (ev.eventData.message === "connected") {
-                    this.buttonsSync = ev.eventData.pressedSync;
+                    this.connnectionSync = ev.eventData.pressedSync;
                 }
             }
             // Event "blinkingStateChanged"
@@ -131,8 +132,8 @@ var app = new Vue({
             }
 
         },
-        // get the value of the variable "buttonState" on the device with number "nr" from your backend
-        getButtonState: function (nr) {
+        // get the value of the variable "connectionState" on the device with number "nr" from your backend
+        getConnectionState: function (nr) {
             axios.get(rootUrl + "/api/device/" + nr + "/variable/connectionState")
                 .then(response => {
                     // Handle the response from the server

@@ -13,37 +13,47 @@
 <body>
 
     <div id="app" class="container">
-        <ul class="pager">
-            <li class="previous"><a href="index.html">Previous</a></li>
-        </ul>
+        <div  style="margin-top: 150px;">
+            <ul class="pager">
+                <li class="previous"><a href="index.html">Previous</a></li>
+            </ul>
+            <h2>HALLO, WILLKOMMEN AUF DEINER APP</h2>
+            <p> Von hier aus lässt sich dein Gerät ganz einfach steuern.</p>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">VERBINGUNGSSTATUS</div>
+                    <div class="panel-body text-center" v-if="connectionState_0===0 && connectionState_1===0"  style="background-color: orangered;">
+                        <h3>GERÄTE SIND NICHT VERBUNDEN</h3>
+                    </div>
+                    <div class="panel-body text-center" v-if="connectionState_0===1 && connectionState_1===1"  style="background-color: greenyellow;">
+                        <h3>GERÄTE SIND VERBUNDEN</h3>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Panel Header</div>
+                    <div class="panel-body">Panel Content</div>
+                </div>
+            </div>
 
+            <!-- Counter example (received as event) -->
+            <p>Button press counter: {{ connectionCounter }}</p>
 
-        <h4>Events</h4>
-        <!-- Sync example -->
-        <p>Buttons pressed within 1 second: {{ buttonsSync }}</p>
+            <hr>
+            <h4>Devices</h4> <!-- VARIABLES  -->
+            <!-- Read variables example -->
+            <p>Connection State of Device (0): {{ connectionState_0 }} </p>
+            <button v-on:click="getConnectionState(0)">Get button state (Device 0)</button>
+            <br>
+            <p>Connection State of Device (1): {{ connectionState_1 }} </p>
+            <button v-on:click="getConnectionState(1)">Get button state (Device 1)</button>
 
-        <!-- Counter example (received as event) -->
-        <p>Button press counter: {{ connectionCounter }}</p>
-
-        <!-- Blinking example (received as event) -->
-        <p>Device 0 is blinking: {{ connectionState_0 }}</p>
-        <p>Device 1 is blinking: {{ connectionState_1 }}</p>
-        
-        <hr>
-        <h4>Devices</h4> <!-- VARIABLES  -->
-        <!-- Read variables example -->
-        <p>Connection State of Device  (0): {{ connectionState_0 }} </p>
-        <button v-on:click="getButtonState(0)">Get button state (Device 0)</button>
-        <br>
-        <p>Connection State of Device (1): {{ connectionState_1 }} </p>
-        <button v-on:click="getButtonState(1)">Get button state (Device 1)</button>
-        
-        <hr>
-        <h4>Functions</h4>
-        <!-- Call functions example  -->
-        <p>Blink red</p>
-        <button v-on:click="connectDevicesByButton(0)">CONNECT DEVICES</button>
-        <button v-on:click="disconnectDevicesByButton(0)">DISCONNECT DEVICES</button>
+            <hr>
+            <h4>STEURE DIE VERBINDUNG VON HIER AUS</h4>
+            <!-- Call functions example  -->
+            <p>Blink red</p>
+            <button v-if="connnectionSync" v-on:click="connectDevicesByButton(0)">CONNECT DEVICES</button>
+            <button v-if="connnectionSync" v-on:click="disconnectDevicesByButton(0)">DISCONNECT DEVICES</button>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

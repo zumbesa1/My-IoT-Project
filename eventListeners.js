@@ -1,6 +1,6 @@
 
 // remember the last event so that we can check if two buttons were pressed within 1 second
-var lastButtonPressEvent = {
+var lastBumpEvent = {
     deviceId: "",
     timestamp: 0
 }
@@ -75,14 +75,13 @@ function handleConnectionStateBumpChanged(event) {
         msg = "connected";
 
         // check if the last two button press events were whithin 1 second
-        if (evTimestamp - lastButtonPressEvent.timestamp < 1000) {
-            if (evDeviceId !== lastButtonPressEvent.deviceId) {
+        if (evTimestamp - lastBumpEvent.timestamp < 1000) {
+            if (evDeviceId !== lastBumpEvent.deviceId) {
                 sync = true;
             }
         }
-
-        lastButtonPressEvent.timestamp = evTimestamp;
-        lastButtonPressEvent.deviceId = evDeviceId;
+        lastBumpEvent.timestamp = evTimestamp;
+        lastBumpEvent.deviceId = evDeviceId;
     } 
     else if (evData === "disconnected") {
         msg = "disconnected";
