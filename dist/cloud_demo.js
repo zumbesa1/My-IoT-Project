@@ -79,7 +79,7 @@ var app = new Vue({
                     console.log(response.data); // we could to something meaningful with the return value here ... 
                 })
                 .catch(error => {
-                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                    alert("Could not call the function 'connectDevicesByButton' of device number 0" + ".\n\n" + error)
                 })
             var duration = 2000; // blinking duration in milliseconds
             axios.post(rootUrl + "/api/device/1/function/connectDevicesByButton", { arg: duration })
@@ -88,7 +88,7 @@ var app = new Vue({
                     console.log(response.data); // we could to something meaningful with the return value here ... 
                 })
                 .catch(error => {
-                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                    alert("Could not call the function 'connectDevicesByButton' of device number 1 " + ".\n\n" + error)
                 })
         },
         // call the function "disconnectDevicesByButton" in your backend
@@ -100,7 +100,7 @@ var app = new Vue({
                     console.log(response.data); // we could to something meaningful with the return value here ... 
                 })
                 .catch(error => {
-                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                    alert("Could not call the function 'disconnectDevicesByButton' of device number 0" + ".\n\n" + error)
                 })
             var duration = 2000; // blinking duration in milliseconds
             axios.post(rootUrl + "/api/device/1/function/disconnectDevicesByButton", { arg: duration })
@@ -109,7 +109,7 @@ var app = new Vue({
                     console.log(response.data); // we could to something meaningful with the return value here ... 
                 })
                 .catch(error => {
-                    alert("Could not call the function 'blinkRed' of device number " + nr + ".\n\n" + error)
+                    alert("Could not call the function 'disconnectDevicesByButton' of device number 1 " + ".\n\n" + error)
                 })
         },
         // get the value of the variable "buttonState" on the device with number "nr" from your backend
