@@ -21,7 +21,7 @@
             <p> Von hier aus lässt sich dein Gerät ganz einfach steuern.</p>
             <div class="panel-group">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center">VERBINGUNGSSTATUS</div>
+                    <div class="panel-heading text-center"><h3>VERBINGUNGSSTATUS</h3></div>
                     <div class="panel-body text-center" v-if="connectionState_0===0 && connectionState_1===0"  style="background-color: orangered;">
                         <h3>GERÄTE SIND NICHT VERBUNDEN</h3>
                     </div>
@@ -30,29 +30,27 @@
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading">Panel Header</div>
-                    <div class="panel-body">Panel Content</div>
+                    <div class="panel-heading text-center"><h3>DEVICES</h3> <!-- VARIABLES  --></div>
+                    <div class="panel-body text-center">
+                        <!-- Read variables example -->
+                        <h4>Connection State of Device (0): {{ connectionState_0 }} </h4>
+                        <button class="btn btn-primary btn-block" v-on:click="getConnectionState(0)">VERBINDDUNGSSTATUS VON GERÄT 2</button>
+                        <br>
+                        <p></p>
+                        <br>
+                        <h4>VERBINDDUNGSSTATUS VON GERÄT 1</h4>
+                        <button  class="btn btn-primary btn-block" v-on:click="getConnectionState(1)">VERBINDDUNGSSTATUS VON GERÄT 1</button>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div v-if="connectionState_0===0" class="panel-heading text-center"><h3>STEURE DIE VERBINDUNG VON HIER AUS</h3> <!-- VARIABLES  --></div>
+                    <div class="panel-body text-center">
+                        <!-- Read variables example -->
+                        <button type="button" class="btn btn-primary btn-block" v-if="connnectionSync" v-on:click="connectDevicesByButton(0)">CONNECT DEVICES</button>
+                        <button type="button" class="btn btn-primary btn-block" v-if="connnectionSync" v-on:click="disconnectDevicesByButton(0)">DISCONNECT DEVICES</button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Counter example (received as event) -->
-            <p>Button press counter: {{ connectionCounter }}</p>
-
-            <hr>
-            <h4>Devices</h4> <!-- VARIABLES  -->
-            <!-- Read variables example -->
-            <p>Connection State of Device (0): {{ connectionState_0 }} </p>
-            <button v-on:click="getConnectionState(0)">Get button state (Device 0)</button>
-            <br>
-            <p>Connection State of Device (1): {{ connectionState_1 }} </p>
-            <button v-on:click="getConnectionState(1)">Get button state (Device 1)</button>
-
-            <hr>
-            <h4>STEURE DIE VERBINDUNG VON HIER AUS</h4>
-            <!-- Call functions example  -->
-            <p>Blink red</p>
-            <button v-if="connnectionSync" v-on:click="connectDevicesByButton(0)">CONNECT DEVICES</button>
-            <button v-if="connnectionSync" v-on:click="disconnectDevicesByButton(0)">DISCONNECT DEVICES</button>
         </div>
     </div>
 
