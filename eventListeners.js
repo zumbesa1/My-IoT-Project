@@ -40,6 +40,7 @@ function handleAlreadyConnected (event) {
 
     // send data to all connected clients
     sendData("alreadyConnectetMessage", data, evDeviceId, evTimestamp );
+    
 }
 // react on the "blinkingStateChanged" Event
 function handleAlreadyDisconnected (event) {
@@ -115,6 +116,7 @@ function sendData(evName, evData, evDeviceId, evTimestamp ) {
         deviceNumber: nr,
         timestamp: evTimestamp,
     };
+    console.log(data);
 
     // send the data to all connected clients
     exports.sse.send(data)

@@ -147,6 +147,7 @@ var app = new Vue({
                     else {
                         console.log("unknown device number: " + nr);
                     }
+                    console.log(connectionState);
                 })
                 .catch(error => {
                     alert("Could not read the button state of device number " + nr + ".\n\n" + error)
