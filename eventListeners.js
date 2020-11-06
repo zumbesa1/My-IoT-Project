@@ -116,10 +116,12 @@ function sendData(evName, evData, evDeviceId, evTimestamp ) {
         deviceNumber: nr,
         timestamp: evTimestamp,
     };
+    
     console.log(data);
 
     // send the data to all connected clients
-    exports.sse.send(data)
+    exports.sse.send("DATA");
+    exports.sse.send(data);
 }
 
 exports.deviceIds = [];
