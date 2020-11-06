@@ -25,39 +25,6 @@ function handleBlinkingStateChanged (event) {
     sendData("blinkingStateChanged", data, evDeviceId, evTimestamp );
 }
 
-// react on the "blinkingStateChanged" Event
-function handleAlreadyConnected (event) {
-    // read variables from the event
-    let ev = JSON.parse(event.data);
-    let evData = ev.data; // the data from the argon event: message
-    let evDeviceId = ev.coreid; // the device id
-    let evTimestamp = Date.parse(ev.published_at); // the timestamp of the event
-
-    // the data we want to send to the clients
-    let data = {
-        message: evData, // just forward "started blinking" or "stopped blinking"
-    }
-
-    // send data to all connected clients
-    sendData("alreadyConnectetMessage", data, evDeviceId, evTimestamp );
-    
-}
-// react on the "blinkingStateChanged" Event
-function handleAlreadyDisconnected (event) {
-    // read variables from the event
-    let ev = JSON.parse(event.data);
-    let evData = ev.data; // the data from the argon event: message
-    let evDeviceId = ev.coreid; // the device id
-    let evTimestamp = Date.parse(ev.published_at); // the timestamp of the event
-
-    // the data we want to send to the clients
-    let data = {
-        message: evData, // just forward "started blinking" or "stopped blinking"
-    }
-
-    // send data to all connected clients
-    sendData("alreadyDisconnectedMessage", data, evDeviceId, evTimestamp );
-}
 
 // react on the "connectionStateBump" Event
 function handleConnectionStateBumpChanged(event) {
@@ -116,12 +83,9 @@ function sendData(evName, evData, evDeviceId, evTimestamp ) {
         deviceNumber: nr,
         timestamp: evTimestamp,
     };
-    
-    console.log(data);
 
     // send the data to all connected clients
-    exports.sse.send("DATA");
-    exports.sse.send(data);
+    exports.sse.send(data)
 }
 
 exports.deviceIds = [];
