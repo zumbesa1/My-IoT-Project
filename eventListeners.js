@@ -20,6 +20,8 @@ function handleBlinkingStateChanged (event) {
     let data = {
         message: evData, // just forward "started blinking" or "stopped blinking"
     }
+    console.log("Data:");
+    console.log(data);
 
     // send data to all connected clients
     sendData("blinkingStateChanged", data, evDeviceId, evTimestamp );
@@ -62,6 +64,8 @@ function handleConnectionStateBumpChanged(event) {
         counter: connectionCounter,
         pressedSync: sync
     }
+    console.log("Data:");
+    console.log(data);
 
     // send data to all connected clients
     sendData("connectionStateBump", data, evDeviceId, evTimestamp );
@@ -79,7 +83,8 @@ function handleAlreadyConnected (event) {
     let data = {
         message: evData, // just forward "started blinking" or "stopped blinking"
     }
-
+    console.log("Data:");
+    console.log(data);
     // send data to all connected clients
     sendData("alreadyConnectetMessage", data, evDeviceId, evTimestamp );
     
@@ -96,7 +101,8 @@ function handleAlreadyDisconnected (event) {
     let data = {
         message: evData, // just forward "started blinking" or "stopped blinking"
     }
-
+    console.log("Data:");
+    console.log(data);
     // send data to all connected clients
     sendData("alreadyDisconnectedMessage", data, evDeviceId, evTimestamp );
 }
