@@ -21,10 +21,10 @@
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><h3>VERBINGUNGSSTATUS</h3></div>
-                    <div class="panel-body text-center" v-if="connectionState_0===0 && connectionState_1===0"  style="background-color: orangered;">
+                    <div class="panel-body text-center" v-if="connectionState_0 === 0 && connectionState_1===0"  style="background-color: orangered;">
                         <h3>GERÄTE SIND NICHT VERBUNDEN</h3>
                     </div>
-                    <div class="panel-body text-center" v-if="connectionState_0===1 && connectionState_1===1"  style="background-color: greenyellow;">
+                    <div class="panel-body text-center" v-if="connectionState_0 === 1 && connectionState_1===1"  style="background-color: greenyellow;">
                         <h3>GERÄTE SIND VERBUNDEN</h3>
                     </div>
                 </div>
@@ -33,14 +33,14 @@
                     <div class="panel-body text-center">
                         <!-- Read variables example -->
                         <h4>VERBINDDUNGSSTATUS VON GERÄT 1</h4>
-                        <button v-if="connectionState_0===0"  class="btn btn-primary btn-block" v-on:click="getConnectionState(0)">NICHT VERBUNDEN</button>
-                        <button v-if="connectionState_0===1"  class="btn btn-primary btn-block" v-on:click="getConnectionState(0)">NICHT VERBUNDEN</button>
+                        <button v-if="connectionState_0 === 0"  class="btn btn-primary btn-block" v-on:click="getConnectionState(0)">NICHT VERBUNDEN</button>
+                        <button v-if="connectionState_0 === 1"  class="btn btn-primary btn-block" v-on:click="getConnectionState(0)">NICHT VERBUNDEN</button>
                         <br>
                         <p></p>
                         <br>
                         <h4>VERBINDDUNGSSTATUS VON GERÄT 2</h4>
-                        <button v-if="connectionState_1===0" class="btn btn-primary btn-block" v-on:click="getConnectionState(1)">NICHT VERBUNDEN</button>
-                        <button v-if="connectionState_1===1" class="btn btn-primary btn-block" v-on:click="getConnectionState(1)">NICHT VERBUNDEN</button>
+                        <button v-if="connectionState_1 === 0" class="btn btn-primary btn-block" v-on:click="getConnectionState(1)">NICHT VERBUNDEN</button>
+                        <button v-if="connectionState_1 === 1" class="btn btn-primary btn-block" v-on:click="getConnectionState(1)">NICHT VERBUNDEN</button>
                     </div>
                 </div>
                 <div class="panel panel-default">
