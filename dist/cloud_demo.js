@@ -73,7 +73,6 @@ var app = new Vue({
         },
         // call the function "connectDevicesByButton" in your backend
         connectDevicesByButton: function (nr) {
-            if(nr==0){
                 var duration = 2000; // blinking duration in milliseconds
                 axios.post(rootUrl + "/api/device/"+nr+"/function/connectDevicesByButton", { arg: duration })
                     .then(response => {
@@ -85,8 +84,7 @@ var app = new Vue({
                         console.log("FAIL");
                         alert("Could not call the function 'connectDevicesByButton' of device number " + nr + ".\n\n" + error)
                     })
-            }
-            else{
+                nr++;
                 var duration = 2000; // blinking duration in milliseconds
                 axios.post(rootUrl + "/api/device/"+nr+"/function/connectDevicesByButton", { arg: duration })
                 .then(response => {
@@ -98,13 +96,12 @@ var app = new Vue({
                     console.log("FAIL");
                     alert("Could not call the function 'connectDevicesByButton' of device number " + nr + ".\n\n" + error)
                 })
-            }
+            
             
         },
         // call the function "disconnectDevicesByButton" in your backend
         disconnectDevicesByButton: function (nr) {
             var duration = 2000; // blinking duration in milliseconds
-            if(nr == 0){
                 axios.post(rootUrl + "/api/device/"+nr+"/function/disconnectDevicesByButton", { arg: duration })
                 .then(response => {
                     // Handle the response from the server
@@ -116,8 +113,7 @@ var app = new Vue({
                     alert("Could not call the function 'disconnectDevicesByButton' of device number " + nr + ".\n\n" + error)
                 })
                 //-------------------------
-            }
-            else{
+                nr++;
                 var duration = 2000; // blinking duration in milliseconds
                 axios.post(rootUrl + "/api/device/"+nr+"/function/disconnectDevicesByButton", { arg: duration })
                     .then(response => {
@@ -129,8 +125,6 @@ var app = new Vue({
                         console.log("FAIL");
                         alert("Could not call the function 'disconnectDevicesByButton' of device number" + nr + ".\n\n" + error)
                     }) 
-            }
-
         },
         // get the value of the variable "connectionState" on the device with number "nr" from your backend
         getConnectionState: function (nr) {
